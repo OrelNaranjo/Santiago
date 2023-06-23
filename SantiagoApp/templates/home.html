@@ -1,7 +1,53 @@
 {% extends './index.html' %}
 {% load static %}
 {% block body %}
-  <div class="col-md-12">
-      <h1>Home</h1>
+<section class="ftco-section ftco-no-pt ftco-no-pb">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="featured">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="featured-menus ftco-animate">
+                <div class="menu-img img" style="background-image: url({% static 'images/breakfast-1.jpg' %});"></div>
+                <div class="text text-center">
+                  <h3>Mix de carne con fideos</h3>
+                  <p><span>Carne</span>, <span>Pollo</span>, <span>Fideos</span>, <span>Cebollin</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="featured-menus ftco-animate">
+                <div class="menu-img img" style="background-image: url({% static 'images/breakfast-2.jpg' %});"></div>
+                <div class="text text-center">
+                  <h3>Filetes de pollo con ensalada</h3>
+                  <p><span>Pollo</span>, <span>Pepino</span>, <span>Tomate</span>, <span>Albahaca</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="featured-menus ftco-animate">
+                <div class="menu-img img" style="background-image: url({% static 'images/breakfast-3.jpg' %});"></div>
+                <div class="text text-center">
+                  <h3>Avena con platano</h3>
+                  <p><span>Avena</span>, <span>Platano</span>, <span>Yogur</span>, <span>Chia</span>, <span>Canela</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="featured-menus ftco-animate">
+                <div class="menu-img img" style="background-image: url({% static 'images/breakfast-4.jpg' %});"></div>
+                <div class="text text-center">
+                  <h3>Huevo con tocino</h3>
+                  <p><span>Aguacate</span>, <span>Huevo</span>, <span>Brocoli</span>, <span>Pan integral</span>, <span>Tocino</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
 {% endblock %}

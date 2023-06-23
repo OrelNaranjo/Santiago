@@ -1,0 +1,54 @@
+{% load static %}
+<section class="ftco-section" id="order-status">
+    <div class="container">
+        <div class="row justify-content-center pb-2">
+            <div class="col-md-12 text-center heading-section ftco-animate">
+              <span class="subheading">Administrar</span>
+              <h2 class="mb-4">Cambios de Estado de Pedido</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center pb-2">
+            <div class="col-md-12 text-center heading-section ftco-animate">
+                <h3 class="text-danger">Pedido N° 123456</h3>
+            </div>
+        </div>  
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="order-status">
+            <li class="mb-4">
+              <h3 class="step-title">Pedido Pagado</h3>
+              <p>N° Transacción: 11254356</p>
+              <p>Tipo de pago: Puntos</p>
+              <button class="btn btn-primary pass">Pagado</button>
+            </li>
+            <li class="mb-4">
+              <h3 class="step-title">Pedido Procesado</h3>
+              <p class="step-description">Tu pedido fue preparado y empaquetado.</p>
+              <p id="cook-details">Empresa: Alimentos Santiago</p>
+              <p id="cook-details">Cocinero: Juan Pérez</p>
+              <p id="cook-details">Empaque: Ana Rodriguez</p>
+              <button class="btn btn-primary pass">Enviado</button>
+            </li>
+            <li class="mb-4">
+              <h3 class="step-title">Enviado</h3>
+              <p class="step-description">El pedido está en camino hacia la dirección de destino.</p>
+              <p id="delivery-details">Transportista: María López</p>
+              <p id="delivery-details">Vehículo: Motocicleta</p>
+              <p id="delivery-details">Placa: 1234ABC</p>
+
+              <button class="btn btn-primary">Marcar como Entregado</button>
+            </li>
+            <li class="mb-4">
+              <h3 class="step-title">Esperando Entrega</h3>
+              <p class="step-description">Tu pedido aún no ha sido entregado correctamente.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6 image-column text-center">
+          <img src="{% static 'images/delivery.png' %}" alt="Delivery Image">
+          <p id="delivery-details">Tiempo transcurrido: 30 minutos</p>
+          <p id="delivery-details"> Tiempo restante: <span class="pass">15 minutos</span></p>
+        </div>
+      </div>
+    </div>
+  </section>

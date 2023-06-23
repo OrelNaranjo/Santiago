@@ -1,0 +1,99 @@
+{% load static %}
+<section class="ftco-section" id="tracking">
+  <div class="container">
+    <div class="row no-gutters justify-content-center mb-5 pb-2">
+      <div class="col-md-12 text-center heading-section ftco-animate">
+        <span class="subheading">Localización</span>
+        <h2 class="mb-4">Rastreo de pedido</h2>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-6">
+        <div id="map" style="height: 400px;"></div>
+        <div id="delivery-time">
+          <p>Tiempo estimado de entrega: <span id="time-remaining">45:00</span></p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tracking-details">
+          <h4>Número de Pedido: #123456</h4>
+          <h5>Estado del Pedido: En Camino</h5>
+          <ul class="tracking-progress">
+            <li class="pass">Pedido Aceptado</li>
+            <li class="pass">En Preparación</li>
+            <li class="active">En Camino</li>
+            <li>Entregado</li>
+          </ul>
+          <h5>Información de Entrega</h5>
+          <p>Dirección de Entrega: Calle Falsa 123</p>
+          <p>Cliente: John Doe</p>
+          <p>Teléfono: 123-456-7890</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABo2IrIHZivzqFFtZx4NY6CVJLAwqtcIg&callback=initMap"></script>
+<script>
+  let map;
+  let deliveryMarker;
+  let deliveryPath;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -33.500000, lng: -70.650000 },
+      zoom: 14,
+    });
+
+    deliveryMarker = new google.maps.Marker({
+      position: { lat: -33.500000, lng: -70.650000 },
+      map: map,
+      title: 'Ubicación de entrega'
+    });
+
+    const startLocation = { lat: -33.490000, lng: -70.640000 };
+    const endLocation = { lat: -33.510000, lng: -70.660000 };
+
+    const deliveryPathCoordinates = [
+      startLocation,
+      { lat: -33.500000, lng: -70.645000 },
+      { lat: -33.505000, lng: -70.655000 },
+      endLocation
+    ];
+
+    deliveryPath = new google.maps.Polyline({
+      path: deliveryPathCoordinates,
+      geodesic: true,
+      strokeColor: "#FF0000",
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
+
+    deliveryPath.setMap(map);
+
+    // Centrar el mapa en la posición de inicio
+    map.setCenter(startLocation);
+
+    var deliveryTime = new Date();
+    deliveryTime.setMinutes(deliveryTime.getMinutes() + 45);
+
+    function updateRemainingTime() {
+      var currentTime = new Date();
+      var timeDiff = deliveryTime - currentTime;
+
+      if (timeDiff <= 0) {
+        document.getElementById("time-remaining").innerHTML = "00:00";
+        return;
+      }
+
+      var minutes = Math.floor((timeDiff / 1000 / 60) % 60);
+      var seconds = Math.floor((timeDiff / 1000) % 60);
+
+      var formattedTime = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
+      document.getElementById("time-remaining").innerHTML = formattedTime;
+    }
+
+    setInterval(updateRemainingTime, 1000);
+  }
+</script>

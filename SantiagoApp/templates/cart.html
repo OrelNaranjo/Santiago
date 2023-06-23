@@ -1,0 +1,108 @@
+{% load static %}
+<section class="ftco-section" id="cart">
+  <div class="container">
+    <div class="row no-gutters justify-content-center mb-5 pb-2">
+      <div class="col-md-12 text-center heading-section ftco-animate">
+        <span class="subheading">Pedido</span>
+        <h2 class="mb-4">Carro de Compras</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="cart-items">
+          <div class="cart-item p-2">
+            <div class="row">
+              <div class="col-md-3">
+                <img src="{% static 'images/breakfast-1.jpg' %}" alt="Imagen del producto" class="img-fluid">
+              </div>
+              <div class="col-md-6">
+                <h5>Mix de carne con fideos</h5>
+                <p>Carne, Pollo, Fideos, Cebollín</p>
+              </div>
+              <div class="col-md-3">
+                <div class="item-price">$7.990</div>
+                <div class="item-quantity">
+                  <button class="btn btn-sm btn-secondary">-</button>
+                  <span>1</span>
+                  <button class="btn btn-sm btn-secondary">+</button>
+                </div>
+                <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+              </div>
+            </div>
+          </div>
+          <div class="cart-item p-2">
+            <div class="row">
+              <div class="col-md-3">
+                <img src="{% static 'images/breakfast-2.jpg' %}" alt="Imagen del producto" class="img-fluid">
+              </div>
+              <div class="col-md-6">
+                <h5>Filetes de pollo con ensalada</h5>
+                <p>Pollo, Pepino, Tomate, Albahaca</p>
+              </div>
+              <div class="col-md-3">
+                <div class="item-price">$5.990</div>
+                <div class="item-quantity">
+                  <button class="btn btn-sm btn-secondary">-</button>
+                  <span>1</span>
+                  <button class="btn btn-sm btn-secondary">+</button>
+                </div>
+                <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+              </div>
+            </div>
+          </div>
+          <div class="cart-item p-2">
+            <div class="row">
+              <div class="col-md-3">
+                <img src="{% static 'images/breakfast-3.jpg' %}" alt="Imagen del producto" class="img-fluid">
+              </div>
+              <div class="col-md-6">
+                <h5>Avena con plátano</h5>
+                <p>Avena, Plátano, Yogur, Chía, Canela</p>
+              </div>
+              <div class="col-md-3">
+                <div class="item-price">$2.990</div>
+                <div class="item-quantity">
+                  <button class="btn btn-sm btn-secondary">-</button>
+                  <span>1</span>
+                  <button class="btn btn-sm btn-secondary">+</button>
+                </div>
+                <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="cart-summary">
+          <h5>Resumen de compra</h5>
+          <div class="summary-item">
+            <span class="text">Subtotal</span>
+            <span class="price text-right">$16.970</span>
+          </div>
+          <div class="summary-item">
+            <span class="text">Envío</span>
+            <span class="price text-right">$2.000</span>
+          </div>
+          <div class="summary-item total">
+            <span class="text">Total</span>
+            <span class="price text-right">$18.970</span>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <a href="#" class="btn btn-primary btn-block">Realizar Pedido</a>
+            </div>
+            <div class="col">
+              <a href="#" class="btn btn-secondary btn-block">Vaciar Carrito</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .cart-summary, .cart-items {
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+</style>

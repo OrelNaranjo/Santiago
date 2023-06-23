@@ -7,34 +7,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ========== Favicon ========== -->
     <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}" sizes="any">
-    <!-- ========== CSS FontAwesome ========== -->
-    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/solid.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/brands.min.css' %}" />
-    <!-- ========== CSS Bootstrap ========== -->
+    <!-- ========== Fuentes ========== -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- ========== Librerias CSS ========== -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
     <!-- ========== CSS Personalizado ========== -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %}Caos News, La voz de todos.{% endblock %} </title>
 <body>
-    <div class="container">
     <header>
+    <div class="py-1 bg-black top">
+        <div class="container">
+            <div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+            <div class="col-lg-12 d-block">
+                <div class="row d-flex">
+                <div class="col-md pr-4 d-flex topper align-items-center">
+                    <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span>
+                    </div>
+                    <span class="text">+56 9 5223 4198</span>
+                </div>
+                <div class="col-md pr-4 d-flex topper align-items-center">
+                    <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
+                        class="icon-paper-plane"></span></div>
+                    <span class="text">contacto@alimentosantiago.cl</span>
+                </div>
+                <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
+                    <p class="mb-0 register-link"><span>Horario de Atención:</span><span> Lunes a Sabado de 8:00 - 22:00
+                        Horas</span></p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
     <!-- ========== Barra de navegación ========== -->
         {% include 'navbar.html' %}
     <!-- ========== Cuerpo ========== -->
     </header>
+        <!-- Modal de inicio de sesión -->
+        <div class="modal fade" id="loginModal"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">>
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-lock"></i> Iniciar sesión</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <!-- Formulario de inicio de sesión -->
+                <form>
+                    <div class="form-group">
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="username" placeholder="Ingresa tu nombre de usuario">
+                    </div>
+                    <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Recordar cuenta</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                </form>
+                </div>
+                <div class="modal-footer">
+                <p class="text-white" style="vertical-align: middle;">¿No tienes una cuenta? <a href="#">Registrarse</a></p>
+                <p class="text-white"><a href="#">¿Olvidaste tu contraseña?</a></p>
+                </div>
+            </div>
+            </div>
+        </div>
+        {% include 'carousel.html' %}
     <main>
         {% block body %}{% endblock %}
     </main>
+        {% include 'about.html' %}
+        {% include 'team.html' %}
+        {% include 'catalog.html' %}
+        {% include 'catalog_detail.html' %}
+        {% include 'cart.html' %}
+        {% include 'contact.html' %}
+        {% include 'tracking.html' %}
+        {% include 'tracking-status.html' %}
     <!-- ========== Pie de pagina ========== -->
         {% include 'footer.html' %}
-    </div>
-<!-- ========== Librerias JS jQuery ========== -->
-<script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
-<!-- ========== Librerias JS Bootstrap ========== -->
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+    </svg>
+</div>
+<!-- ========== Librerias JS========== -->
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
 <!-- ========== Librerias JS Personalizada ========== -->
-<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
  </body>
 </html>
