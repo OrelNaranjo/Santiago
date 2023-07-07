@@ -283,3 +283,65 @@
 
 })(jQuery);
 
+// Función para validar el formulario de registro de cliente
+function validarFormularioCliente() {
+	var nombre = document.getElementById('id_nombre').value;
+	var direccion = document.getElementById('id_direccion').value;
+	
+	if (nombre.trim() === '') {
+	  alert('Por favor, ingresa un nombre válido.');
+	  return false;
+	}
+	
+	if (direccion.trim() === '') {
+	  alert('Por favor, ingresa una dirección válida.');
+	  return false;
+	}
+	
+	return true;
+  }
+  
+  // Función para validar el formulario de creación de pedido
+  function validarFormularioPedido() {
+	var cliente = document.getElementById('id_cliente').value;
+	var platos = document.querySelectorAll('input[name="platos"]:checked');
+	var fechaEntrega = document.getElementById('id_fecha_entrega').value;
+	var horaEntrega = document.getElementById('id_hora_entrega').value;
+	
+	if (cliente === '') {
+	  alert('Por favor, selecciona un cliente.');
+	  return false;
+	}
+	
+	if (platos.length === 0) {
+	  alert('Por favor, selecciona al menos un plato.');
+	  return false;
+	}
+	
+	if (fechaEntrega.trim() === '') {
+	  alert('Por favor, ingresa una fecha de entrega válida.');
+	  return false;
+	}
+	
+	if (horaEntrega.trim() === '') {
+	  alert('Por favor, ingresa una hora de entrega válida.');
+	  return false;
+	}
+	
+	return true;
+  }
+  
+  // Asignar la función de validación al evento 'submit' del formulario de registro de cliente
+  document.getElementById('formularioCliente').addEventListener('submit', function(event) {
+	if (!validarFormularioCliente()) {
+	  event.preventDefault(); // Detener el envío del formulario si no es válido
+	}
+  });
+  
+  // Asignar la función de validación al evento 'submit' del formulario de creación de pedido
+  document.getElementById('formularioPedido').addEventListener('submit', function(event) {
+	if (!validarFormularioPedido()) {
+	  event.preventDefault(); // Detener el envío del formulario si no es válido
+	}
+  });
+  
