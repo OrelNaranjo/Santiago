@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import Proveedor, Plato, Cliente, Pedido, Repartidor, RutaEntrega, CategoriaPlato, Ingrediente
 from .forms import ClienteForm, PedidoForm, LoginForm
 
 def index(request):
-    return render(request, 'index.html')
+    user = request.user
+    first_name = user.first_name if user.is_authenticated else None
+    last_name = user.last_name if user.is_authenticated else None
+    context = {
+        'first_name': first_name,
+        'last_name': last_name
+    }
+    return render(request, 'index.html', context)
 
 def home(request):
     return render(request, 'home.html')
@@ -55,19 +62,25 @@ def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
+            try:
+                user = User.objects.get(email=email)
+            except User.DoesNotExist:
+                # El usuario no existe
+                user = None
+
+            if user is not None and user.check_password(password):
+                # La contraseña es válida
                 login(request, user)
                 return redirect('index')
-    return render(request, 'login.html', {'form': form})
+    # Redirige a la página de inicio en caso de fallo de inicio de sesión
+    return redirect('index')
     
 
-# Vista de cierre de sesión
 def cerrar_sesion(request):
-    # Lógica para cerrar sesión
-    return redirect('inicio')
+    logout(request)
+    return redirect('index')
 
 # Vista de crear pedido
 def crear_pedido(request):
