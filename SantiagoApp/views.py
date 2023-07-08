@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import Proveedor, Plato, Cliente, Pedido, Repartidor, RutaEntrega, CategoriaPlato, Ingrediente
+from .forms import ClienteForm, PedidoForm, LoginForm
 
 def index(request):
     return render(request, 'index.html')
@@ -49,10 +51,18 @@ def registrar_cliente(request):
         return redirect('inicio')
     return render(request, 'registro_cliente.html')
 
-# Vista de inicio de sesión
-def login(request):
-    # Lógica para iniciar sesión
-    return render(request, 'login.html')
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('index')
+    return render(request, 'login.html', {'form': form})
+    
 
 # Vista de cierre de sesión
 def cerrar_sesion(request):

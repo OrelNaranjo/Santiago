@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %}Alimentos Santiago{% endblock %} </title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
     <div class="py-1 bg-black top">
         <div class="container">
@@ -33,15 +33,21 @@
                 <div class="col-lg-12 d-block">
                     <div class="row d-flex">
                         <div class="col-md pr-4 d-flex topper align-items-center">
-                            <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                            <div class="icon mr-2 d-flex justify-content-center align-items-start">
+                                <span class="icon-phone2"></span>
+                            </div>
                             <span class="text">+56 9 5223 4198</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
-                            <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                            <div class="icon mr-2 d-flex justify-content-center align-items-center">
+                                <span class="icon-paper-plane"></span>
+                            </div>
                             <span class="text">contacto@alimentosantiago.cl</span>
                         </div>
-                        <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
-                            <p class="mb-0 register-link"><span>Horario de Atención:</span><span> Lunes a Sabado de 8:00 - 22:00 Horas</span></p>
+                        <div class="col-md pr-4 d-flex topper align-items-center justify-content-end">
+                            <p class="mb-0 register-link"><span>Horario:</span>
+                                <span> Lunes a Sabado de 8:00 - 22:00 Horas</span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -52,44 +58,48 @@
         {% include 'navbar.html' %}
     <!-- ========== Cuerpo ========== -->
     </header>
-        <!-- Modal de inicio de sesión -->
-        <div class="modal fade" id="loginModal"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+    <!-- Modal de inicio de sesión -->
+    <div class="modal fade" id="loginModal"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-3">
                 <div class="modal-header">
-                <h5 class="modal-title"><i class="fas fa-lock"></i> Iniciar sesión</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <h5 class="modal-title"><i class="fas fa-lock"></i> Iniciar sesión</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                 <!-- Formulario de inicio de sesión -->
-                <form>
+                <form id="loginForm" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
                     <div class="form-group">
-                    <label for="username">Nombre de usuario</label>
-                    <input type="text" class="form-control" id="username" placeholder="Ingresa tu nombre de usuario">
+                        <label for="username">Correo Electronico</label>
+                        <input type="text" class="form-control" id="username" placeholder="Ingresa tu nombre de usuario">
                     </div>
                     <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+                        <label for="password">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
                     </div>
-                    <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="rememberMe">
-                    <label class="form-check-label" for="rememberMe">Recordar cuenta</label>
+                    <div class="form-group pt-2">
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                     </div>
-                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                 </form>
                 </div>
                 <div class="modal-footer">
-                <p class="text-white" style="vertical-align: middle;">¿No tienes una cuenta? <a href="#">Registrarse</a></p>
-                <p class="text-white"><a href="#">¿Olvidaste tu contraseña?</a></p>
+                    <p class="text-white d-none" style="vertical-align: middle;">¿No tienes una cuenta? <a href="#regModal" data-bs-toggle="modal" role="button">Registrar</a></p>
+                    <p class="text-white d-none"><a href="#">¿Olvidaste tu contraseña?</a></p>
                 </div>
             </div>
-            </div>
         </div>
+    </div>
     <main>
         {% block body %}
         {% endblock %}
+        <!-- ========== Secciones ========== -->
+        {% include 'home.html' %}
+        {% include 'nosotros.html' %}
+        {% include 'equipo.html' %}
+        {% include 'contacto.html' %}
     </main>
     <!-- ========== Pie de pagina ========== -->
         {% include 'footer.html' %}
@@ -117,5 +127,5 @@
 <script src="{% static 'js/scrollax.min.js' %}"></script>
 <!-- ========== Librerias JS Personalizada ========== -->
 <script src="{% static 'js/main.js' %}"></script>
- </body>
+</body>
 </html>

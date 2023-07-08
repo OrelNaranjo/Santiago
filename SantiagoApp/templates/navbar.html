@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">
+      <a class="navbar-brand" href="{% url 'index' %}">
         <svg width="430" height="40" viewBox="0 0 370 40">
           <defs id="SvgjsDefs6826">
             <linearGradient id="SvgjsLinearGradient6833">
@@ -55,13 +55,16 @@
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="{% url 'home' %}" class="nav-link">Inicio</a></li>
-          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">Nosotros</a></li>
-          <li class="nav-item"><a href="{% url 'staff' %}" class="nav-link">Personal</a></li>
+          <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Inicio</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">Nosotros</a></li>
+          <li class="nav-item"><a href="#staff" class="nav-link">Personal</a></li>
           <li class="nav-item"><a href="{% url 'menu' %}" class="nav-link">Menu</a></li>
-          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contacto</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+          {% if user.is_authenticated %}
           <li class="nav-item"><a href="#" class="nav-link d-flex align-items-center" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user"></i><span class="pl-1" >Ingresar</span></a></li>
+          {% else %}
           <li class="nav-item"><a href="#" class="nav-link"><span class="icon-exit_to_app"></span></a></li>
+          {% endif %}
           <li class="nav-item" ><a href="#" class="nav-link"><span class="icon-truck"></span></a></li>
           <li class="nav-item cta"><a href="#" class="nav-link"><span class="icon-shopping_cart"></span></a></li>
         </ul>

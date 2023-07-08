@@ -1,9 +1,42 @@
-{% extends './index.html' %}
 {% load static %}
-{% block body %}
-<div class="container">
-  <h1>Home</h1>
-</div>
+<section class="home-slider owl-carousel js-fullheight">
+  <div class="slider-item js-fullheight" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center"
+              data-scrollax-parent="true">
+              <div class="col-md-12 col-sm-12 text-center ftco-animate">
+                  <span class="subheading">Alimentos Santiago</span>
+                  <h1 class="mb-4">Los ingredientes más frescos</h1>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="slider-item js-fullheight" style="background-image: url({% static 'images/bg_2.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center"
+              data-scrollax-parent="true">
+              <div class="col-md-12 col-sm-12 text-center ftco-animate">
+                  <span class="subheading">Alimentos Santiago</span>
+                  <h1 class="mb-4">Desayunos Saludables</h1>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="slider-item js-fullheight" style="background-image: url({% static 'images/bg_3.jpg' %});">
+      <div class="overlay"></div>
+      <div class="container">
+          <div class="row slider-text js-fullheight justify-content-center align-items-center"
+              data-scrollax-parent="true">
+              <div class="col-md-12 col-sm-12 text-center ftco-animate">
+                  <span class="subheading">Alimentos Santiago</span>
+                  <h1 class="mb-4">Especialidades deliciosas</h1>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
 <section class="ftco-section ftco-no-pt ftco-no-pb">
   <div class="container-fluid">
     <div class="row">
@@ -52,4 +85,3 @@
     </div>
   </div>
 </section>
-{% endblock %}
